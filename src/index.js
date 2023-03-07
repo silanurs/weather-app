@@ -6,7 +6,6 @@ async function getWeatherData(location){
 try{
     const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=1f2a375bcd444a9e917183403230403&q=${location}`, {mode:'cors'});
     const weatherData = await response.json();
-    console.log(weatherData)
     displayWeatherData(weatherData);
 }
 catch(error){
@@ -41,20 +40,24 @@ function displayWeatherData(newData){
     document.querySelector('.feels-like-c').innerHTML = Math.round(newData.current.feelslike_c) + "&#8451;";
     document.querySelector('.humidity').textContent = newData.current.humidity + "%";
     document.querySelector('.wind').textContent = newData.current.wind_mph + "mph";
-    document.getElementById('display').addEventListener('click', ()=> {
+    document.querySelector('.displayF').addEventListener('click', ()=>{
+       document.querySelector('.displayF').innerHTML= 'Display ' + '&#8457;';
+        document.querySelector('.displayF').style.display ='none';
+        document.querySelector('.displayC').style.display = 'block';
         document.querySelector('.degree').innerHTML= Math.round(newData.current.temp_f) + "&#8457;";
         document.querySelector('.feels-like-c').innerHTML = Math.round(newData.current.feelslike_f) + "&#8457;";
-        document.querySelector('.displayF').innerHTML= 'Display &#8451;';
-        document.querySelector('#display').classList.add('displayC');
-        document.querySelector('#display').classList.remove('displayF');
-        document.querySelector('.displayC').addEventListener('click', ()=>{
-            document.querySelector('.displayC').innerHTML = 'Display &#8457'
-            document.querySelector('.displayC').classList.add('displayF')
-            document.querySelector('#display').classList.remove('displayC')
-            document.querySelector('.degree').innerHTML= Math.round(newData.current.temp_c) + "&#8451;";
-            document.querySelector('.feels-like-c').innerHTML = Math.round(newData.current.feelslike_c) + "&#8451;";
-        })
     })
+    document.querySelector('.displayC').addEventListener('click', () => {
+        document.querySelector('.displayC').innerHTML = 'Display ' +  '&#8451;'
+        document.querySelector('.displayC').style.display ='none';
+        document.querySelector('.displayF').style.display = 'block';
+        document.querySelector('.degree').innerHTML= Math.round(newData.current.temp_c) + "&#8451;";
+        document.querySelector('.feels-like-c').innerHTML = Math.round(newData.current.feelslike_c) + "&#8451;"
+    })
+
+   
+
+
 }
 function handleInput(){
     const city = document.querySelector('.input');
