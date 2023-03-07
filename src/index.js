@@ -15,12 +15,46 @@ catch(error){
 }
 function displayWeatherData(newData){
     document.querySelector('.condition').textContent= newData.current.condition.text;
+    document.querySelector('.icon').src= newData.current.condition.icon;
     document.querySelector('.city').textContent = newData.location.name + " ,";
     document.querySelector('.country').textContent = newData.location.country;
     document.querySelector('.degree').innerHTML= Math.round(newData.current.temp_c) + "&#8451;";
+    const body = document.querySelector('body');
+    if(newData.current.temp_c < 0){
+        body.style.backgroundImage = 'url(imgs/snow.jpg)';
+        body.style.backgroundAttachment = 'fixed';
+        body.style.backgroundRepeat='no-repeat';
+        body.style.backgroundSize='100% 100%';
+    }
+    if(newData.current.temp_c < 20 && newData.current.temp_c > 0){
+        body.style.backgroundImage = 'url(imgs/rain.jpg)';
+        body.style.backgroundAttachment = 'fixed';
+        body.style.backgroundRepeat='no-repeat';
+        body.style.backgroundSize='100% 100%';
+    }
+    if(newData.current.temp_c > 20){
+        body.style.backgroundImage = 'url(imgs/sun.jpg)';
+        body.style.backgroundAttachment = 'fixed';
+        body.style.backgroundRepeat='no-repeat';
+        body.style.backgroundSize='100% 100%';
+    }
     document.querySelector('.feels-like-c').innerHTML = Math.round(newData.current.feelslike_c) + "&#8451;";
     document.querySelector('.humidity').textContent = newData.current.humidity + "%";
     document.querySelector('.wind').textContent = newData.current.wind_mph + "mph";
+    document.getElementById('display').addEventListener('click', ()=> {
+        document.querySelector('.degree').innerHTML= Math.round(newData.current.temp_f) + "&#8457;";
+        document.querySelector('.feels-like-c').innerHTML = Math.round(newData.current.feelslike_f) + "&#8457;";
+        document.querySelector('.displayF').innerHTML= 'Display &#8451;';
+        document.querySelector('#display').classList.add('displayC');
+        document.querySelector('#display').classList.remove('displayF');
+        document.querySelector('.displayC').addEventListener('click', ()=>{
+            document.querySelector('.displayC').innerHTML = 'Display &#8457'
+            document.querySelector('.displayC').classList.add('displayF')
+            document.querySelector('#display').classList.remove('displayC')
+            document.querySelector('.degree').innerHTML= Math.round(newData.current.temp_c) + "&#8451;";
+            document.querySelector('.feels-like-c').innerHTML = Math.round(newData.current.feelslike_c) + "&#8451;";
+        })
+    })
 }
 function handleInput(){
     const city = document.querySelector('.input');

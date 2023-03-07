@@ -1,0 +1,59 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    color:rgb(255, 255, 255);
+    cursor:alias;
+}
+body{
+    background-image: url(imgs/snow.jpg);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size:100% 100%;
+}
+input {
+    background-color: #394fce;
+    width: 30vw;
+    height: 5vh;
+    
+}
+button {
+    background-color: #394fce;
+    color: #fff;
+}
+::placeholder {
+    color:#fff;
+}
+form {
+    margin-top: 3vh;
+}
+article {
+    height: 50vh;
+    margin-top: 18vh;
+    display: grid;
+    justify-content:center;
+    align-items:center;
+    font-weight: bold;
+}
+.location {
+    display: flex;
+    font-size: 4rem;
+}
+form {
+    display:flex;
+    justify-content:center;
+    column-gap: 2vw;
+}
+.condition{
+    font-size: 2.5rem;
+}
+.degree{
+    font-size: 3.3rem;
+}
+.quality {
+    font-size: 2rem;
+}
+.displayF{
+    font-size: 1.5rem;
+    cursor:grab;
+}
