@@ -53,7 +53,31 @@ form {
 .quality {
     font-size: 2rem;
 }
-.displayF{
+.displayC, .displayF{
     font-size: 1.5rem;
     cursor:grab;
 }
+.displayC {
+    display:none;
+}
+@media (max-width:500px){
+    .location {
+        display: flex;
+        font-size: 2rem;
+    }
+    .condition{
+        font-size: 1.5rem;
+    }
+    .degree{
+        font-size: 1.8rem;
+    }
+    .quality {
+        font-size: 1.3rem;
+    }
+    .displayC, .displayF{
+        font-size: 1.3rem;
+        cursor:grab;
+    }
+
+}
+    
