@@ -3,7 +3,7 @@
     padding:0;
     box-sizing:border-box;
     color:rgb(255, 255, 255);
-    cursor:alias;
+    cursor:default;
 }
 body{
     background-image: url(imgs/snow.jpg);
@@ -55,7 +55,7 @@ form {
 }
 .displayC, .displayF{
     font-size: 1.5rem;
-    cursor:grab;
+    cursor:pointer;
 }
 .displayC {
     display:none;
